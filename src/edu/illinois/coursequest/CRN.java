@@ -1,7 +1,6 @@
 package edu.illinois.coursequest;
 /**
- * TODO set up look up
- * for semi-finished code look at older revisions prior to 10/23
+ * TODO write code for CRN look up....or by class name....
  * */
 public class CRN {
 
