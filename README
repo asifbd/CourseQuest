@@ -6,3 +6,5 @@ Brief Description: An android application that lets users edit and view a schedu
 Basic Functionality: The android program will take the data off the enterprise portal or from manual input and store key data on the phone. This data includes: class name, professor, time, section, class type, and CRN. The Program will then render an interactive schedule on the handset. 
 
 Extended Functionality: The program would be able to set phone settings (i.e. silent mode) depending on class attributes, such as time and place.
+
+Devin edited this.
