@@ -9,13 +9,15 @@ import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.TabActivity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 public class CourseQuest extends TabActivity {
 	/**
@@ -29,7 +31,6 @@ public class CourseQuest extends TabActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		setAlarm();
 		// Resources res = getResources(); // Resource object to get Drawables
 		tabHost = getTabHost(); // The activity TabHost
 		TabHost.TabSpec spec; // Resusable TabSpec for each tab
@@ -60,29 +61,26 @@ public class CourseQuest extends TabActivity {
 		tabHost.setCurrentTab(0);
 	}
 
-	private void setAlarm() {
-		String alarm = Context.ALARM_SERVICE;
-		AlarmManager am;
-		am = (AlarmManager) getSystemService(alarm);
-
-		Intent intent = new Intent("REFRESH_THIS");
-		PendingIntent op;
-		op = PendingIntent.getBroadcast(this, 0, intent, 0);
-
-		int type = AlarmManager.ELAPSED_REALTIME_WAKEUP;
-		long interval = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
-		long triggerTime = SystemClock.elapsedRealtime() + interval;
-
-		am.setInexactRepeating(type, triggerTime, interval, op);
-	}
-
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, 1, 0, "Add Course");
 		menu.add(0, 2, 0, "About"); // maybe later....
 		menu.add(0, 3, 0, "Exit");
 		return true;
 	}
-
+	/*
+	 * This alarm receiver class is the broadcast receiver but currently the onreceive method is not being called.
+	 */
+	public class alarmReceiver extends BroadcastReceiver
+	{
+		Context context = getApplicationContext();
+		@Override
+		public void onReceive(Context context, Intent intent)
+		{
+			AudioManager ringControl = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE); // Makes an AudioManager
+			ringControl.setRingerMode(0); // sets the phone's ringer to silent
+			Toast.makeText(context, "Alarm worked.", Toast.LENGTH_SHORT).show(); // notifies the user that the alarm worked.
+		}
+	}
 	//
 	/* Handles item selections */
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -91,6 +89,19 @@ public class CourseQuest extends TabActivity {
 			Intent goToEditInfo = new Intent(getApplicationContext(),
 					AddCourse.class);
 			startActivityForResult(goToEditInfo, 0);
+			/*
+			 * Everything below this is the newly implemented alarm I was trying to set.
+			 * The Alarm Receiver class is just above this method.
+			 * This should work but the alarmReceiver either isn't registered correctly in the manifest or
+			 * 		the pendingintent I wrote was wrong...take a look and see what you think?
+			*/
+			Intent intent = new Intent(this, alarmReceiver.class); // creates intent referring to 
+																   //alarmreceiver as the broadcast receiver
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+							// makes the same intent a pending intent..
+			AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);// creates an alarm manager
+			alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (10000), pendingIntent); // set the first alarm
+			Toast.makeText(this, "Alarm set", Toast.LENGTH_SHORT).show(); // indicates that the alarm was set.
 			// Brings up Edit Info
 			return true;
 		case 2:
@@ -112,7 +123,7 @@ public class CourseQuest extends TabActivity {
 		// bit of a hack to get this working the ListView to update (not open on
 		// it :p)
 		super.onActivityResult(requestCode, resultCode, data);
-		tabHost.setCurrentTab(1);
+		tabHost.setCurrentTab(1);		
 	}
 
 }

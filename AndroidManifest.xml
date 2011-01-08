@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="edu.illinois.coursequest" android:versionCode="2"
-	android:versionName="0.5">
+	package="edu.illinois.coursequest" android:versionCode="2" android:versionName="0.5">
 	<application android:icon="@drawable/icon" android:label="@string/app_name"
 		android:debuggable="false">
+		
+		
+		<!-- The isolated code below is my attempt at registering the receiver but it's not working apparently -->
+		<receiver android:enabled="true"
+          android:exported="false"
+          android:name="edu.illinois.coursequest.CourseQuest.alarmReceiver" >
+		</receiver>
+		
+		
+		
 		<activity android:name=".CourseQuest" android:theme="@android:style/Theme.NoTitleBar"
 			android:label="@string/app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-		
-</activity>
+		</activity>
 
 		<activity android:name=".ViewAll"></activity>
 		<activity android:name=".WeekView" android:screenOrientation="portrait"></activity>
@@ -19,11 +27,8 @@
 
 		<activity android:name=".DayView"></activity>
 		<activity android:name=".MoreInfo"></activity>
-		
-	<service android:name=".Silent"></service>
-<receiver android:name=".MyReciever"></receiver>
-</application>
+	</application>
 
 
-	<uses-sdk android:minSdkVersion="1"></uses-sdk>
+<uses-sdk android:minSdkVersion="1"></uses-sdk>
 </manifest> 
