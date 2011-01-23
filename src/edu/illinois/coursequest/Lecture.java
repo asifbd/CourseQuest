@@ -1,5 +1,6 @@
 package edu.illinois.coursequest;
 
+
 public class Lecture extends Course {
 	/**
 	 * Same as Course but assigns proper Color
@@ -17,5 +18,9 @@ public class Lecture extends Course {
 	
 	protected int pickColor(){
 		return primColors[super.getCourseID()];
+	}
+	
+	public String getType(){
+		return "Lecture";
 	}
 }

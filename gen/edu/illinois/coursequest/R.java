@@ -75,13 +75,27 @@ public final class R {
         public static final int portrait_weekview2=0x7f030007;
     }
     public static final class string {
+        public static final int CRN=0x7f04000f;
+        public static final int about=0x7f04000a;
+        public static final int about_app=0x7f04000b;
+        public static final int add_course=0x7f040009;
+        public static final int all_view=0x7f040008;
         public static final int app_name=0x7f040001;
-        public static final int day_of_week=0x7f040006;
-        public static final int empty=0x7f040007;
+        public static final int day_of_week=0x7f040005;
+        public static final int day_view=0x7f040006;
+        public static final int delete=0x7f040012;
+        public static final int discussion=0x7f04000d;
+        public static final int edit=0x7f040013;
+        public static final int empty=0x7f040015;
         public static final int end_prompt=0x7f040002;
+        public static final int exit=0x7f040014;
         public static final int hello=0x7f040000;
+        public static final int lab=0x7f04000e;
+        public static final int lecture=0x7f04000c;
+        public static final int no_class=0x7f040010;
+        public static final int no_crn=0x7f040011;
         public static final int start_prompt=0x7f040003;
-        public static final int tester=0x7f040004;
-        public static final int type_prompt=0x7f040005;
+        public static final int type_prompt=0x7f040004;
+        public static final int week_view=0x7f040007;
     }
 }

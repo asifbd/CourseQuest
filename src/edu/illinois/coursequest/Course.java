@@ -1,6 +1,6 @@
 package edu.illinois.coursequest;
 
-public class Course {
+public abstract class Course {
 	/**
 	 * @author vazque16 mills16
 	 * */
@@ -33,65 +33,67 @@ public class Course {
 	 * @param startTime
 	 * @param endTime
 	 */
-	
+
 	public Course(CourseInfo info) {
 		courseID = count++;
 		this.info = info;
 	}
 
-	public CourseInfo getInfo() {
-		return info;
+	public Course(Course a) {
+		courseID = count++;
+		this.info = a.info;
 	}
 
-	
-	public void setInfo(CourseInfo info) {
-		this.info = info;
+	public String toString() {
+		return getInfo().getName() + "   " + getFormattedTime();
 	}
 
-	public Course(Course c) {
-		courseID = count;
-		count++;
-		this.info = c.info;
+	public boolean isClassAt(int day, int hour) {
+		if (day < 0 || day > 4)
+			return false;
+		boolean[] dayArray = getInfo().getDayslot().getDays();
+		return (dayArray[day] && getInfo().getStartTime() == hour);
+	}
+
+	public String getFormattedTime() {
+		// This code retrieves the time then converts it out of army time
+		String times = "";
+		int sTime = this.info.getStartTime();
+		if (sTime > 12) {
+			times += (sTime - 12) + ":00 PM - ";
+		} else {
+			times += sTime + ":00 AM - ";
+		}
+
+		int eTime = this.info.getEndTime();
+		if (eTime > 12) {
+			times += (eTime - 12) + ":00 PM";
+		} else {
+			times += eTime + ":00 AM";
+		}
+		return times;
 	}
 
 	protected int pickColor() {
 		return 0;
 	}
 
-	public String getName() {
-		return info.getName();
+	protected static void decrementID() {
+		count--;
+		if (count < 0)
+			count = 0;
 	}
 
-	public String getDescription() {
-		return info.getDescription();
+	/*
+	 * Getters and setters
+	 */
+
+	public CourseInfo getInfo() {
+		return info;
 	}
 
-	public String getProf() {
-		return info.getProf();
-	}
-
-	public String getSection() {
-		return info.getSection();
-	}
-
-	public int getCrn() {
-		return info.getCrn();
-	}
-
-	public int getStartTime() {
-		return info.getStartTime();
-	}
-
-	public int getEndTime() {
-		return info.getEndTime();
-	}
-
-	public boolean isSilent() {
-		return info.isSilent();
-	}
-
-	public DaySlot getDayslot() {
-		return info.getDayslot();
+	public void setInfo(CourseInfo info) {
+		this.info = info;
 	}
 
 	public int getColor() {
@@ -102,10 +104,6 @@ public class Course {
 		this.color = color;
 	}
 
-	public void decrementID(){
-		count--;
-	}
-	
 	public int getCourseID() {
 		return courseID;
 	}
@@ -120,6 +118,10 @@ public class Course {
 
 	public static void setCount(int count) {
 		Course.count = count;
+	}
+
+	public String getType() {
+		return "";
 	}
 
 }

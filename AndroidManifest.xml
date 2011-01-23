@@ -10,20 +10,18 @@
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
-		
-</activity>
+
+		</activity>
 
 		<activity android:name=".ViewAll"></activity>
 		<activity android:name=".WeekView" android:screenOrientation="portrait"></activity>
-		<activity android:name=".AddCourse"></activity>
+		<activity android:name="AddOrEditCourse"></activity>
 
 		<activity android:name=".DayView"></activity>
 		<activity android:name=".MoreInfo"></activity>
-		
-	<service android:name=".Silent"></service>
-<receiver android:name=".MyReciever"></receiver>
-</application>
+
+	</application>
 
 
-	<uses-sdk android:minSdkVersion="1"></uses-sdk>
+	<uses-sdk android:minSdkVersion="4"></uses-sdk>
 </manifest> 

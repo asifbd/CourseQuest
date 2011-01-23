@@ -1,13 +1,13 @@
 package edu.illinois.coursequest;
 
 
+
 public class CourseInfo {
 	private String name, description, prof, section;
 	private int crn, startTime, endTime;
 	private boolean silent;
 	private DaySlot dayslot;
-	
-	
+
 	public CourseInfo(String name, String description, String prof,
 			DaySlot dayslot, String section, int crn,
 			int startTime, int endTime, boolean silent){
@@ -110,4 +110,5 @@ public class CourseInfo {
 	public void setDayslot(DaySlot dayslot) {
 		this.dayslot = dayslot;
 	}
+
 }

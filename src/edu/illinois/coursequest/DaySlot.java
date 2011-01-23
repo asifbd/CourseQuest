@@ -1,5 +1,6 @@
 package edu.illinois.coursequest;
 
+
 public class DaySlot {
 	boolean[] days = new boolean[5];
 

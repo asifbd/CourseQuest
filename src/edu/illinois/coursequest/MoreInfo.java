@@ -8,13 +8,10 @@ import android.widget.Toast;
 
 public class MoreInfo extends Activity {
 	private static Course currentCourse;
-	
+
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.moreinfo);
-		TextView tv = new TextView(null);
-		tv.setText("Hello");
-		setContentView(tv);
+		setContentView(R.layout.moreinfo);
 	}
 
 	public void infoUpdate(View view) {
@@ -22,29 +19,22 @@ public class MoreInfo extends Activity {
 		// Course currentCourse = CourseList.currentCourse;
 
 		if (currentCourse != null) {
-			String times = CourseList.getFormattedTime(currentCourse);
+			CourseInfo info = currentCourse.getInfo();
+			String times = currentCourse.getFormattedTime();
 			((TextView) findViewById(R.id.timename)).setText(times);
 
-			((TextView) findViewById(R.id.coursename)).setText(currentCourse
-					.getName());
-			((TextView) findViewById(R.id.profname)).setText(currentCourse
-					.getProf());
-			((TextView) findViewById(R.id.sectionname)).setText(currentCourse
+			((TextView) findViewById(R.id.coursename)).setText(info.getName());
+			((TextView) findViewById(R.id.profname)).setText(info.getProf());
+			((TextView) findViewById(R.id.sectionname)).setText(info
 					.getSection());
-			((TextView) findViewById(R.id.crnname)).setText("CRN: "
-					+ currentCourse.getCrn());
-			String classType;
-			if (currentCourse instanceof Lecture)
-				classType = "Lecture";
-			else if (currentCourse instanceof Lab)
-				classType = "Lab";
-			else
-				classType = "Discussion";
-			((TextView) findViewById(R.id.lecturename)).setText(classType);
+			((TextView) findViewById(R.id.crnname))
+					.setText(getString(R.string.CRN) + ": " + info.getCrn());
+			((TextView) findViewById(R.id.lecturename)).setText(currentCourse
+					.getType());
 			return; // early return
 		}
 		finish();
-		Toast.makeText(getApplicationContext(), ("No Class There!"),
+		Toast.makeText(getApplicationContext(), (getString(R.string.no_class)),
 				Toast.LENGTH_SHORT).show();
 	}
 

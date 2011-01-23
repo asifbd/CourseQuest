@@ -1,26 +1,27 @@
 package edu.illinois.coursequest;
 
+
 public class Discussion extends Course {
 	private Lecture l;
 
 	public Discussion(CourseInfo info, Lecture l) {
 		super(info);
-		this.l = l;
-		super.setColor(pickColor());
-		if (l != null) {
-			super.setCourseID(l.getCourseID());
-		}
+		init(l);
 	}
 
 	public Discussion(Course c, Lecture l) {
 		super(c);
+		init(l);
+	}
+
+	private void init(Lecture l) {
 		this.l = l;
 		super.setColor(pickColor());
 		if (l != null) {
 			super.setCourseID(l.getCourseID());
+			Course.decrementID();
 		}
 	}
-
 	protected int pickColor() {
 		if (l != null) {
 			return thirdColors[l.getCourseID()];
@@ -37,5 +38,9 @@ public class Discussion extends Course {
 		super.setColor(pickColor());
 		super.setCourseID(l.getCourseID());
 		super.decrementID();
+	}
+	
+	public String getType(){
+		return "Discussion";
 	}
 }

@@ -22,7 +22,6 @@ public class WeekView extends Activity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		goWeekView(null);
 	}
 
@@ -47,9 +46,9 @@ public class WeekView extends Activity {
 
 				String courseName = "";
 				int color = 0;
-				Course temp = CourseList.getSlotPos(j, i);
+				Course temp = CourseQuest.getSched().getCourseAt(j, i);
 				if (temp != null) {
-					courseName = temp.getName();
+					courseName = temp.getInfo().getName();
 					int courseColor = temp.getColor();
 					color = Color.rgb(Color.red(courseColor), Color
 							.green(courseColor), Color.blue(courseColor));// course.getColor();
@@ -86,29 +85,22 @@ public class WeekView extends Activity {
 		// Course currentCourse = CourseList.currentCourse;
 
 		if (tempCourse != null) {
-			String times = CourseList.getFormattedTime(tempCourse);
+			String times = tempCourse.getFormattedTime();
 			((TextView) findViewById(R.id.timename)).setText(times);
 
-			((TextView) findViewById(R.id.coursename)).setText(tempCourse
-					.getName());
-			((TextView) findViewById(R.id.profname)).setText(tempCourse
-					.getProf());
-			((TextView) findViewById(R.id.sectionname)).setText(tempCourse
+			CourseInfo info = tempCourse.getInfo();
+			((TextView) findViewById(R.id.coursename)).setText(info.getName());
+			((TextView) findViewById(R.id.profname)).setText(info.getProf());
+			((TextView) findViewById(R.id.sectionname)).setText(info
 					.getSection());
-			((TextView) findViewById(R.id.crnname)).setText("CRN: "
-					+ tempCourse.getCrn());
-			String classType;
-			if (tempCourse instanceof Lecture)
-				classType = "Lecture";
-			else if (tempCourse instanceof Lab)
-				classType = "Lab";
-			else
-				classType = "Discussion";
-			((TextView) findViewById(R.id.lecturename)).setText(classType);
+			((TextView) findViewById(R.id.crnname))
+					.setText(getString(R.string.CRN) + ": " + info.getCrn());
+			((TextView) findViewById(R.id.lecturename)).setText(tempCourse
+					.getType());
 			return; // early return
 		}
 		goWeekView(null);
-		Toast.makeText(getApplicationContext(), ("No Class There!"),
+		Toast.makeText(getApplicationContext(), (getString(R.string.no_class)),
 				Toast.LENGTH_SHORT).show();
 	}
 
