@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+//TODO write better safeInput method....and implement it....
 public class AddOrEditCourse extends Activity {
 	private Long mCourseId;
 	private Course courseToEdit;
@@ -174,5 +175,9 @@ public class AddOrEditCourse extends Activity {
 			((TextView) findViewById(R.id.section)).setText(info.getSection());
 			((TextView) findViewById(R.id.crn)).setText("" + info.getCrn());
 		}
+	}
+	
+	private boolean safeInput(String s){
+		return ! s.contains("|"); //this is what we use to seperate values is Courses....
 	}
 }

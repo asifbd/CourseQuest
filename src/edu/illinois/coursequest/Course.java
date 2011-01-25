@@ -47,6 +47,10 @@ public abstract class Course {
 	public String toString() {
 		return getInfo().getName() + "   " + getFormattedTime();
 	}
+	
+	public String getMiniString(){
+		return getInfo().getName() + "   " + getFormattedTime();
+	}
 
 	public boolean isClassAt(int day, int hour) {
 		if (day < 0 || day > 4)

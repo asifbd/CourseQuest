@@ -15,21 +15,41 @@ import android.widget.TabHost;
 
 public class CourseQuest extends TabActivity {
 	/**
-	 * TODO have icons for tabs
+	 * TODO set up saving and loading...
 	 */
 
 	/** Called when the activity is first created. */
 	public TabHost tabHost;
-	//TODO retrieve CourseList from file
-	private static CourseList sched = new CourseList();
+	// TODO retrieve CourseList from file
+	private static CourseList sched;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		setUpSched();
 		setContentView(R.layout.main);
 		setUpTabs();
 	}
 
+
+
+	// Store CourseList....
+	@Override
+	public Object onRetainNonConfigurationInstance() {
+		if (sched != null)
+			return sched;
+		return super.onRetainNonConfigurationInstance();
+	}
+	
+	private void setUpSched() {
+		if (getLastNonConfigurationInstance() != null) {
+			sched = (CourseList) getLastNonConfigurationInstance();
+		} else {
+			sched = new CourseList();
+		}
+	}
+	
 	private void setUpTabs() {
 		// Resources res = getResources(); // Resource object to get Drawables
 		tabHost = getTabHost(); // The activity TabHost
@@ -81,8 +101,7 @@ public class CourseQuest extends TabActivity {
 		case 2:
 			AlertDialog.Builder about = new AlertDialog.Builder(this);
 			about.setTitle(getString(R.string.about));
-			about
-					.setMessage(getString(R.string.about_app));
+			about.setMessage(getString(R.string.about_app));
 			about.show();
 			return true;
 		case 3:
@@ -99,8 +118,8 @@ public class CourseQuest extends TabActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 		tabHost.setCurrentTab(1);
 	}
-	
-	public static CourseList getSched(){
+
+	public static CourseList getSched() {
 		return sched;
 	}
 

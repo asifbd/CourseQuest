@@ -83,7 +83,7 @@ public class CourseList {
 		courseNames.clear();
 		for (int i = 0; i < sched.size(); i++) {
 			Course tempCourse = sched.get(i);
-			courseNames.add(tempCourse.toString());
+			courseNames.add(tempCourse.getMiniString());
 			DaySlot dayslot = tempCourse.getInfo().getDayslot();
 			boolean[] days = dayslot.getDays();
 			for (int j = 0; j < days.length; j++) {
@@ -147,6 +147,10 @@ public class CourseList {
 	public static String getFormattedTime(int i) {
 		// This code retrieves the time then converts it out of army time
 		return getCourse(i).getFormattedTime();
+	}
+
+	public String toString() {
+		return sched.toString();
 	}
 
 	public void printSchedule() {
