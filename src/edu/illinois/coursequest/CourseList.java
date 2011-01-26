@@ -1,17 +1,16 @@
 package edu.illinois.coursequest;
-
 import java.util.ArrayList;
 
 //import scheduler.Course;
 
 public class CourseList {
-	private static ArrayList<Course> sched = new ArrayList<Course>();
+	private ArrayList<Course> sched = new ArrayList<Course>();
 	private static final int COLS = 5;
 	private static final int ROWS = 16;
 	private Course[][] slotPos = new Course[ROWS][COLS]; // 2d representation of
 	// CourseList
 	// maybe some encapsalation is in order
-	private static ArrayList<String> courseNames = new ArrayList<String>();
+	private ArrayList<String> courseNames = new ArrayList<String>();
 	static final String KEY_COURSE = "course";
 	static final String KEY_ID = "_id";
 
@@ -93,7 +92,7 @@ public class CourseList {
 		}
 	}
 
-	public static Course findCourse(String name) {
+	public Course findCourse(String name) {
 		Course temp;
 		for (int i = 0; i < sched.size(); i++) {
 			temp = sched.get(i);
@@ -104,7 +103,7 @@ public class CourseList {
 		return null;
 	}
 
-	public static Lecture findLecture(CourseInfo info) {
+	public Lecture findLecture(CourseInfo info) {
 		Course temp;
 		for (int i = 0; i < sched.size(); i++) {
 			temp = sched.get(i);
@@ -126,7 +125,7 @@ public class CourseList {
 		return slotPos[day][hour];
 	}
 
-	public static Course getCourse(int index) {
+	public Course getCourse(int index) {
 		return sched.get(index);
 	}
 
@@ -144,7 +143,7 @@ public class CourseList {
 		return false;
 	}
 
-	public static String getFormattedTime(int i) {
+	public String getFormattedTime(int i) {
 		// This code retrieves the time then converts it out of army time
 		return getCourse(i).getFormattedTime();
 	}
@@ -168,40 +167,51 @@ public class CourseList {
 		}
 	}
 
-	// public static void main(String args[]) {
-	//	
-	// CourseList sched = new CourseList();
-	// DaySlot dayslot = new DaySlot();
-	// dayslot.setDays(new boolean[] { true, false, true, false, true });
-	// CourseInfo info = new CourseInfo("test", "testy", "proftest", dayslot,
-	// "section", 1111, 12, 1, false);
-	// Lecture temp = new Lecture(info);
-	// Lab temp2 = new Lab(info, temp);
-	// Discussion temp3 = new Discussion(info, temp);
-	// sched.addCourse(temp2);
-	// sched.addCourse(temp);
-	// sched.addCourse(temp3);
-	// sched.deleteCourse(1);
-	// sched.deleteCourse(1);
-	// sched.deleteCourse(1);
-	// sched.deleteCourse(1);
-	// sched.deleteCourse(1);
-	// sched.addCourse(temp2);
-	// sched.addCourse(temp);
-	// sched.addCourse(temp3);
-	// sched.addCourse(temp2);
-	// sched.editCourse(info, 1);
-	// sched.editCourse(info, 1);
-	// sched.editCourse(info, 1);
-	// sched.editCourse(info, 1);
-	// sched.editCourse(info, 1);
-	// sched.editCourse(info, 1);
-	// sched.editCourse(info, 'a');
-	// sched.editCourse(info, 1);
-	// sched.addCourse(temp);
-	// sched.addCourse(temp3);
-	//	 
-	// sched.printSchedule();
-	// System.out.print(sched.isClassAt(2, 12));
-	// }
+	public static void main(String args[]) {
+//
+		CourseList sched = new CourseList();
+		DaySlot dayslot = new DaySlot();
+		dayslot.setDays(new boolean[] { true, false, true, false, true });
+		CourseInfo info = new CourseInfo("test", "testy", "proftest", dayslot,
+				"section", 1111, 12, 1, false);
+		Lecture temp = new Lecture(info);
+		Lab temp2 = new Lab(info, temp);
+		Discussion temp3 = new Discussion(info, temp);
+		sched.addCourse(temp2);
+		sched.addCourse(temp);
+		sched.addCourse(temp3);
+		sched.deleteCourse(1);
+		sched.deleteCourse(1);
+		sched.deleteCourse(1);
+		sched.deleteCourse(1);
+		sched.deleteCourse(1);
+		sched.addCourse(temp2);
+		sched.addCourse(temp);
+		sched.addCourse(temp3);
+		sched.addCourse(temp2);
+		sched.editCourse(info, 1);
+		sched.editCourse(info, 1);
+		sched.editCourse(info, 1);
+		sched.editCourse(info, 1);
+		sched.editCourse(info, 1);
+		sched.editCourse(info, 1);
+		sched.editCourse(info, 'a');
+		sched.editCourse(info, 1);
+		sched.addCourse(temp);
+		sched.addCourse(temp3);
+//		//	 
+//		// sched.printSchedule();
+//		// System.out.print(sched.isClassAt(2, 12));
+//		System.out.println(sched);
+//		String s = sched.toString();
+//		System.out.print(CourseParser.toCourseList(s).toString().equals(s));
+		//System.out.println(sched);
+		String s = "[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]";
+		String b = CourseParser.toCourseList(s).toString(); 
+		System.out.println(b.equals(s));
+		
+		s = sched.toString();
+		b = CourseParser.toCourseList(s).toString(); 
+		System.out.println(b.equals(s));
+	}
 }

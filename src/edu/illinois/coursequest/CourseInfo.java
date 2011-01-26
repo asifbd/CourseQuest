@@ -1,5 +1,4 @@
 package edu.illinois.coursequest;
-
 public class CourseInfo {
 	private String name, description, prof, section;
 	private int crn, startTime, endTime;
@@ -22,8 +21,8 @@ public class CourseInfo {
 
 	public String toString() {
 		return name + "|" + description + "|" + prof + "|" + dayslot.toString()
-				+ section + "|" + crn + "|" + startTime + "|" + endTime + "|"
-				+ silent;
+				+ "|" + section + "|" + crn + "|" + startTime + "|" + endTime
+				+ "|" + silent + "|";
 	}
 
 	public String getName() {

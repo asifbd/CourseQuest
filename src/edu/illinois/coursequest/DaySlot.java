@@ -1,5 +1,6 @@
 package edu.illinois.coursequest;
 
+
 public class DaySlot {
 	boolean[] days = new boolean[5];
 
@@ -31,6 +32,8 @@ public class DaySlot {
 		for (int i = 0; i < 5; i++)
 			if (days[i])
 				temp += i;
+			else
+				temp += " ";
 		return temp;
 	}
 

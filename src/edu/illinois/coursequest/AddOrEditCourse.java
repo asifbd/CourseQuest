@@ -161,7 +161,7 @@ public class AddOrEditCourse extends Activity {
 
 	private void populateFields() {
 		if (mCourseId != null) {
-			courseToEdit = CourseList.getCourse(mCourseId.intValue());
+			courseToEdit = CourseQuest.getSched().getCourse(mCourseId.intValue());
 			CourseInfo info = courseToEdit.getInfo();
 			boolean[] days = info.getDayslot().getDays();
 			((CheckBox) findViewById(R.id.mon)).setChecked(days[0]);

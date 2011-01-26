@@ -102,7 +102,7 @@ public class DayView extends Activity {
 					// TODO switch to context menu
 					// Finds Course Based on Text
 					String text = (String) ((TextView) v).getText();
-					currentCourse = CourseList.findCourse(text);
+					currentCourse = CourseQuest.getSched().findCourse(text);
 					goMoreView(null);
 				}
 			});

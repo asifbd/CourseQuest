@@ -3,6 +3,7 @@ package edu.illinois.coursequest;
 
 public class Discussion extends Course {
 	private Lecture l;
+	protected char type = 'D';
 
 	public Discussion(CourseInfo info, Lecture l) {
 		super(info);
@@ -24,9 +25,13 @@ public class Discussion extends Course {
 	}
 	protected int pickColor() {
 		if (l != null) {
-			return thirdColors[l.getCourseID()];
+			return thirdColors[l.getCourseID() % 8];
 		}
-		return thirdColors[super.getCourseID()];
+		return thirdColors[super.getCourseID() % 8];
+	}
+	
+	public String toString(){
+		return "|" + type + super.toString();
 	}
 
 	public Lecture getL() {
@@ -38,9 +43,5 @@ public class Discussion extends Course {
 		super.setColor(pickColor());
 		super.setCourseID(l.getCourseID());
 		super.decrementID();
-	}
-	
-	public String getType(){
-		return "Discussion";
 	}
 }

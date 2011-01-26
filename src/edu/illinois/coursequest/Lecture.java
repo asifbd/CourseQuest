@@ -2,6 +2,7 @@ package edu.illinois.coursequest;
 
 
 public class Lecture extends Course {
+	private char type = 'L';
 	/**
 	 * Same as Course but assigns proper Color
 	 * @param info
@@ -16,11 +17,15 @@ public class Lecture extends Course {
 		super.setColor(pickColor());
 	}
 	
-	protected int pickColor(){
-		return primColors[super.getCourseID()];
+	public String toString(){
+		return "|" + "L" + super.toString();
 	}
 	
-	public String getType(){
-		return "Lecture";
+	public char getType(){
+		return type;
+	}
+	
+	protected int pickColor(){
+		return primColors[super.getCourseID() % 8];
 	}
 }

@@ -44,11 +44,12 @@ public abstract class Course {
 		this.info = a.info;
 	}
 
+	// tacks on courseID...
 	public String toString() {
-		return getInfo().getName() + "   " + getFormattedTime();
+		return "|" + courseID + "|" + info.toString();
 	}
-	
-	public String getMiniString(){
+
+	public String getMiniString() {
 		return getInfo().getName() + "   " + getFormattedTime();
 	}
 
@@ -123,9 +124,9 @@ public abstract class Course {
 	public static void setCount(int count) {
 		Course.count = count;
 	}
-
-	public String getType() {
-		return "";
+	
+	public char getType(){
+		return 0;
 	}
 
 }
