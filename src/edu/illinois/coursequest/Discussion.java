@@ -1,6 +1,5 @@
 package edu.illinois.coursequest;
 
-
 public class Discussion extends Course {
 	private Lecture l;
 	protected char type = 'D';
@@ -23,15 +22,20 @@ public class Discussion extends Course {
 			Course.decrementID();
 		}
 	}
+
 	protected int pickColor() {
 		if (l != null) {
 			return thirdColors[l.getCourseID() % 8];
 		}
 		return thirdColors[super.getCourseID() % 8];
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return "|" + type + super.toString();
+	}
+
+	public String getCourseType() {
+		return "Discussion";
 	}
 
 	public Lecture getL() {

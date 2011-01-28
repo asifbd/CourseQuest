@@ -53,7 +53,6 @@ public class WeekView extends Activity {
 					color = Color.rgb(Color.red(courseColor), Color
 							.green(courseColor), Color.blue(courseColor));// course.getColor();
 				}
-
 				ViewGroup innerRootView = (ViewGroup) findViewById(R.id.widget62);
 				TableRow row = (TableRow) innerRootView.getChildAt(j + 1);
 				TextView text = (TextView) row.getChildAt(i + 1);
@@ -70,7 +69,13 @@ public class WeekView extends Activity {
 					public boolean onLongClick(View v) {
 						// TODO find currentCourse
 						tempCourse = (Course) v.getTag();
-						goMoreView(null);
+
+						if (tempCourse == null)
+							Toast.makeText(getApplicationContext(),
+									(getString(R.string.no_class)),
+									Toast.LENGTH_SHORT).show();
+						else
+							goMoreView(null);
 						return true;
 					}
 				});
@@ -84,24 +89,20 @@ public class WeekView extends Activity {
 		// TODO fix currentCourse to actually be currentCoure
 		// Course currentCourse = CourseList.currentCourse;
 
-		if (tempCourse != null) {
-			String times = tempCourse.getFormattedTime();
-			((TextView) findViewById(R.id.timename)).setText(times);
+		populate();
+	}
 
-			CourseInfo info = tempCourse.getInfo();
-			((TextView) findViewById(R.id.coursename)).setText(info.getName());
-			((TextView) findViewById(R.id.profname)).setText(info.getProf());
-			((TextView) findViewById(R.id.sectionname)).setText(info
-					.getSection());
-			((TextView) findViewById(R.id.crnname))
-					.setText(getString(R.string.CRN) + ": " + info.getCrn());
-			((TextView) findViewById(R.id.lecturename)).setText(tempCourse
-					.getType());
-			return; // early return
-		}
-		goWeekView(null);
-		Toast.makeText(getApplicationContext(), (getString(R.string.no_class)),
-				Toast.LENGTH_SHORT).show();
+	private void populate() {
+		String times = tempCourse.getFormattedTime();
+		((TextView) findViewById(R.id.timename)).setText(times);
+		CourseInfo info = tempCourse.getInfo();
+		((TextView) findViewById(R.id.coursename)).setText(info.getName());
+		((TextView) findViewById(R.id.profname)).setText(info.getProf());
+		((TextView) findViewById(R.id.sectionname)).setText(info.getSection());
+		((TextView) findViewById(R.id.crnname)).setText(getString(R.string.CRN)
+				+ ": " + info.getCrn());
+		//String classType = tempCourse.getCourseType();
+		//((TextView) findViewById(R.id.lecturename)).setText(classType);
 	}
 
 	public void goMoreView(View view) {

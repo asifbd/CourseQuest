@@ -53,6 +53,10 @@ public abstract class Course {
 		return getInfo().getName() + "   " + getFormattedTime();
 	}
 
+	public String getCourseType() {
+		return "Course";
+	}
+
 	public boolean isClassAt(int day, int hour) {
 		if (day < 0 || day > 4)
 			return false;
@@ -124,8 +128,8 @@ public abstract class Course {
 	public static void setCount(int count) {
 		Course.count = count;
 	}
-	
-	public char getType(){
+
+	public char getType() {
 		return 0;
 	}
 

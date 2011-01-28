@@ -26,7 +26,6 @@ public class AddOrEditCourse extends Activity {
 		goEditView(null);
 	}
 
-
 	public void goEditView(View view) {
 
 		setContentView(R.layout.editlecture);
@@ -161,7 +160,8 @@ public class AddOrEditCourse extends Activity {
 
 	private void populateFields() {
 		if (mCourseId != null) {
-			courseToEdit = CourseQuest.getSched().getCourse(mCourseId.intValue());
+			courseToEdit = CourseQuest.getSched().getCourse(
+					mCourseId.intValue());
 			CourseInfo info = courseToEdit.getInfo();
 			boolean[] days = info.getDayslot().getDays();
 			((CheckBox) findViewById(R.id.mon)).setChecked(days[0]);
@@ -175,9 +175,5 @@ public class AddOrEditCourse extends Activity {
 			((TextView) findViewById(R.id.section)).setText(info.getSection());
 			((TextView) findViewById(R.id.crn)).setText("" + info.getCrn());
 		}
-	}
-	
-	private boolean safeInput(String s){
-		return ! s.contains("|"); //this is what we use to seperate values is Courses....
 	}
 }

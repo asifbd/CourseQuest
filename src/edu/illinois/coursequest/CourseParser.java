@@ -1,13 +1,19 @@
 package edu.illinois.coursequest;
+
+//This class contains functions for string manipulation for CourseQuest...
+//3 public functions toCourseList, toCourse, and safeStrings
+
 public class CourseParser {
 	private static CourseList sched = new CourseList(); // manipulates a
-														// schedule like so
+
+	// schedule like so
 
 	// Notes No , or | are allowed in strings....else its considered broken...
 	// @author Marcell Vazquez-Chanlatte
 	// TODO make this not suck...
 	// TODO seriously this code sucks....I'll clean it up when i need to....
 	// TODO probably using String buffers and such....
+
 	public static CourseList toCourseList(String s) {
 		sched = new CourseList();
 		// Get rid of bracket
@@ -18,9 +24,6 @@ public class CourseParser {
 			temp = findNextPos2(s.substring(0));
 			String a = s.substring(0, temp);
 			s = s.substring(temp + 2);
-			// System.out.println(a);
-			// String a =
-			// "|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|";
 			sched.addCourse(toCourse(a));
 		}
 		sched.addCourse(toCourse(s.substring(0, findNextPos3(s))));
@@ -35,11 +38,19 @@ public class CourseParser {
 	 * @param s
 	 * @return
 	 */
-	private static Course toCourse(String s) {
+	public static Course toCourse(String s) {
 		if (s == null)
 			return null; // early return
 		// System.out.println(s.substring(3,s.length()));
 		return makeCourse(s.substring(3), toType(s));
+	}
+
+	/**
+	 *Takes a string and makes sure there is no |'s
+	 * 
+	 */
+	public static boolean safeString(String s) {
+		return !s.contains("|");
 	}
 
 	/**
@@ -127,22 +138,26 @@ public class CourseParser {
 		return c;
 	}
 
-	public static void main(String args[]) {
-		// [|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
-		// |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
-		// |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
-		// |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
-		// |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
-		// |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
-		// |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]
-		// System.out
-		// .print("[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]"
-		// .equals("[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]"));
-		// System.out.print(toCourse("|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|"));
-		String s = "[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]";
-		String b = toCourseList(s).toString();
-		System.out.println(b.equals(s));
-		// System.out
-		// .print(toCourseList("[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]"));
-	}
+	/*
+	 * This Code was to test the Parser... TODO write J-Unit test...
+	 */
+	// public static void main(String args[]) {
+	// [|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
+	// |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
+	// |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
+	// |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
+	// |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
+	// |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|,
+	// |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]
+	// System.out
+	// .print("[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]"
+	// .equals("[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]"));
+	// System.out.print(toCourse("|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|"));
+	// String s =
+	// "[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]";
+	// String b = toCourseList(s).toString();
+	// System.out.println(b.equals(s));
+	// System.out
+	// .print(toCourseList("[|l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |l|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |L|0|test|testy|proftest|0 2 4|section|1111|12|1|false|, |D|0|test|testy|proftest|0 2 4|section|1111|12|1|false|]"));
+	// }
 }

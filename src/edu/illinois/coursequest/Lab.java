@@ -15,6 +15,10 @@ public class Lab extends Discussion {
 		super(c, l);
 	}
 
+	public String getCourseType(){
+		return "Lab";
+	}
+	
 	public int pickColor() {
 		if (this.getL() != null)
 			return secColors[this.getL().getCourseID() % 8];

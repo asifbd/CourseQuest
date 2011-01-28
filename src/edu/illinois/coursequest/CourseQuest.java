@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 public class CourseQuest extends TabActivity {
 	/**
@@ -21,35 +22,43 @@ public class CourseQuest extends TabActivity {
 	/** Called when the activity is first created. */
 	public TabHost tabHost;
 	// TODO retrieve CourseList from file
-	private static CourseList sched;
+	private static CourseList sched = new CourseList();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setUpSched();
+		// setUpSched(); //Load Saved schedule
 		setContentView(R.layout.main);
 		setUpTabs();
 	}
 
-
-
-	// Store CourseList....
 	@Override
-	public Object onRetainNonConfigurationInstance() {
-		if (sched != null)
-			return sched;
-		return super.onRetainNonConfigurationInstance();
+	protected void onPause() {
+		super.onPause();
+
+		// Store values between instances here
+		// SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+		// SharedPreferences.Editor editor = preferences.edit();
+		//
+		// editor.putString("CourseList", sched.toString()); // value to store
+		// // Commit to storage
+		// editor.commit();
 	}
-	
-	private void setUpSched() {
-		if (getLastNonConfigurationInstance() != null) {
-			sched = (CourseList) getLastNonConfigurationInstance();
-		} else {
-			sched = new CourseList();
-		}
-	}
-	
+
+	// private void setUpSched() {
+	// retrieveSched();
+	// }
+	//
+	// private void retrieveSched() {
+	// // Get the between instance stored values
+	// SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+	// String s = preferences.getString("CourseList", null);
+	// // Set the values of the UI
+	// if (s != null)
+	// sched = CourseParser.toCourseList(s);
+	// }
+
 	private void setUpTabs() {
 		// Resources res = getResources(); // Resource object to get Drawables
 		tabHost = getTabHost(); // The activity TabHost
@@ -64,6 +73,7 @@ public class CourseQuest extends TabActivity {
 				this.getString(R.string.day_view)).setContent(intent);
 		tabHost.addTab(spec);
 
+		// Create an Intent to launch an Activity for the tab (to be reused)
 		intent = new Intent().setClass(this, WeekView.class);
 
 		// Initialize a TabSpec for each tab and add it to the TabHost
@@ -71,40 +81,44 @@ public class CourseQuest extends TabActivity {
 				this.getString(R.string.week_view)).setContent(intent);
 		tabHost.addTab(spec);
 
-		intent = new Intent().setClass(this, ViewAll.class);
-
-		spec = tabHost.newTabSpec("")
-				.setIndicator(getString(R.string.all_view)).setContent(intent);
-		// setIndicator("",
-		// res.getDrawable(R.drawable.weekview)).setContent(intent);
-		tabHost.addTab(spec);
-		tabHost.setCurrentTab(0);
+		tabHost.setCurrentTab(1);
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, 1, 0, getString(R.string.add_course));
-		menu.add(0, 2, 0, getString(R.string.about)); // maybe later....
-		menu.add(0, 3, 0, getString(R.string.exit));
+		menu.add(0, 2, 0, getString(R.string.all_view));
+		menu.add(0, 3, 0, getString(R.string.about));
+		menu.add(0, 4, 0, getString(R.string.exit));
 		return true;
 	}
 
 	//
 	/* Handles item selections */
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent;
 		switch (item.getItemId()) {
 		case 1:
-			Intent intent = new Intent(getApplicationContext(),
-					AddOrEditCourse.class);
+			intent = new Intent(getApplicationContext(), AddOrEditCourse.class);
 			startActivityForResult(intent, 0);
 			// Brings up Edit Info
 			return true;
 		case 2:
+			if (sched.getLength() != 0) {
+				intent = new Intent().setClass(this, ViewAll.class);
+				startActivity(intent);
+			} else {
+				Toast.makeText(getApplicationContext(),
+						(getString(R.string.no_class)), Toast.LENGTH_SHORT)
+						.show();
+			}
+			return true;
+		case 3:
 			AlertDialog.Builder about = new AlertDialog.Builder(this);
 			about.setTitle(getString(R.string.about));
 			about.setMessage(getString(R.string.about_app));
 			about.show();
 			return true;
-		case 3:
+		case 4:
 			this.finish();
 			return true;
 		}
