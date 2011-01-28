@@ -32,13 +32,10 @@ public final class R {
         public static final int day=0x7f060002;
         public static final int daysname=0x7f060011;
         public static final int endHoursSpinner=0x7f06000e;
-        public static final int entry=0x7f060024;
         public static final int fri=0x7f060007;
-        public static final int label=0x7f060023;
         public static final int lecturename=0x7f060016;
         public static final int link_layout=0x7f060010;
         public static final int mon=0x7f060003;
-        public static final int ok=0x7f060025;
         public static final int professor=0x7f060009;
         public static final int profname=0x7f060013;
         public static final int section=0x7f06000a;

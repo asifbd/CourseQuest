@@ -101,8 +101,8 @@ public class WeekView extends Activity {
 		((TextView) findViewById(R.id.sectionname)).setText(info.getSection());
 		((TextView) findViewById(R.id.crnname)).setText(getString(R.string.CRN)
 				+ ": " + info.getCrn());
-		//String classType = tempCourse.getCourseType();
-		//((TextView) findViewById(R.id.lecturename)).setText(classType);
+		String classType = tempCourse.getCourseType();
+		((TextView) findViewById(R.id.lecturename)).setText(classType);
 	}
 
 	public void goMoreView(View view) {

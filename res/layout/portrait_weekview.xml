@@ -42,7 +42,9 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
+				>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="08" android:textSize="15sp" android:textColor="#000000"
@@ -76,7 +78,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="09" android:textSize="15sp" android:textColor="#000000"
@@ -110,7 +113,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="10" android:textSize="15sp" android:textColor="#000000"
@@ -144,7 +148,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="11" android:textSize="15sp" android:textColor="#000000"
@@ -178,7 +183,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="12" android:textSize="15sp" android:textColor="#000000"
@@ -212,7 +218,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="01" android:textSize="15sp" android:textColor="#000000"
@@ -246,7 +253,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="02" android:textSize="15sp" android:textColor="#000000"
@@ -280,7 +288,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="03" android:textSize="15sp" android:textColor="#000000"
@@ -314,7 +323,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="04" android:textSize="15sp" android:textColor="#000000"
@@ -348,7 +358,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="05" android:textSize="15sp" android:textColor="#000000"
@@ -382,7 +393,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="06" android:textSize="15sp" android:textColor="#000000"
@@ -416,7 +428,8 @@
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
-				android:layout_height="50px" android:orientation="horizontal">
+				android:layout_height="80px" android:orientation="horizontal"
+				android:layout_weight="1">
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="fill_parent" android:background="#CACACA"
 					android:text="07" android:textSize="15sp" android:textColor="#000000"

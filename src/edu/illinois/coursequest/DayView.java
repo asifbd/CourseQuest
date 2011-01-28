@@ -127,13 +127,7 @@ public class DayView extends Activity {
 					.getSection());
 			((TextView) findViewById(R.id.crnname))
 					.setText(getString(R.string.CRN) + ": " + info.getCrn());
-			String classType;
-			if (currentCourse instanceof Lecture)
-				classType = getString(R.string.lecture);
-			else if (currentCourse instanceof Lab)
-				classType = getString(R.string.lab);
-			else
-				classType = getString(R.string.discussion);
+			String classType = currentCourse.getCourseType();
 			((TextView) findViewById(R.id.lecturename)).setText(classType);
 			return; // early return
 		}
