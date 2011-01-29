@@ -85,8 +85,8 @@ public class DayView extends Activity {
 		TextView valueTV = (TextView) innerRootView.getChildAt(i + 1);
 		if (valueTV == null) {
 			valueTV = new TextView(this);
-			valueTV.setText(i + 8 + "\t|	" + courseName + "\n\t	" + times
-					+ courseID);
+			valueTV.setText(formatTime(i) + "\t|	" + courseName + "\n\t	"
+					+ times + courseID);
 			valueTV.setTextSize(17);
 			valueTV.setId(i);
 			valueTV.setClickable(true);
@@ -108,9 +108,17 @@ public class DayView extends Activity {
 			});
 			return; // Eary Return
 		}
-		valueTV.setText(i + 8 + "\t|	" + courseName + "\n\t	" + times
+
+		valueTV.setText(formatTime(i) + "\t|	" + courseName + "\n\t	" + times
 				+ courseID);
 		valueTV.setBackgroundColor(color);
+	}
+
+	private String formatTime(int i) {
+		i += 8;
+		if (i < 10)
+			return "0" + i;
+		return "" + i;
 	}
 
 	public void infoUpdate(View view) {

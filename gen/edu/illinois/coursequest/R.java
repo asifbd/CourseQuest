@@ -53,13 +53,13 @@ public final class R {
         public static final int widget62=0x7f06001a;
         public static final int widget64=0x7f06001b;
         public static final int widget68=0x7f060001;
-        public static final int widget_filler=0x7f06001c;
-        public static final int widget_fri=0x7f060021;
-        public static final int widget_mon=0x7f06001d;
-        public static final int widget_thurs=0x7f060020;
-        public static final int widget_tue=0x7f06001e;
-        public static final int widget_tues=0x7f060022;
-        public static final int widget_weds=0x7f06001f;
+        public static final int widget_filler=0x7f060022;
+        public static final int widget_fri=0x7f060020;
+        public static final int widget_mon=0x7f06001c;
+        public static final int widget_thurs=0x7f06001f;
+        public static final int widget_tue=0x7f06001d;
+        public static final int widget_tues=0x7f060021;
+        public static final int widget_weds=0x7f06001e;
     }
     public static final class layout {
         public static final int course_row=0x7f030000;

@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //TODO write better safeInput method....and implement it....
 public class AddOrEditCourse extends Activity {
@@ -66,9 +67,10 @@ public class AddOrEditCourse extends Activity {
 	 * @param view
 	 */
 	public void save(View view) {
-		saveState();
-		setResult(Activity.RESULT_OK);
-		finish();
+		if (saveState()) {
+			setResult(Activity.RESULT_OK);
+			finish();
+		}
 	}
 
 	/**
@@ -96,15 +98,19 @@ public class AddOrEditCourse extends Activity {
 		}
 	}
 
-	private void saveState() {
+	private boolean saveState() {
 		String type = getType();
 		CourseInfo info = getInfo();
-
-		if (courseToEdit == null) { // new course
+		if (info == null) {
+			Toast.makeText(getApplicationContext(), ("Bad Input, Remove '|'"),
+					Toast.LENGTH_SHORT).show();
+			return false; // Early Return
+		} else if (courseToEdit == null) { // new course
 			CourseQuest.getSched().addCourse(info, type);
 		} else { // edit course
 			CourseQuest.getSched().editCourse(courseToEdit, info);
 		}
+		return true;
 	}
 
 	private CourseInfo getInfo() {
@@ -112,6 +118,7 @@ public class AddOrEditCourse extends Activity {
 		if (crn == -1) {
 			finish(); // early terminate
 		}
+
 		String course = ((TextView) findViewById(R.id.course)).getText()
 				.toString();
 		String professor = ((TextView) findViewById(R.id.professor)).getText()
@@ -132,9 +139,12 @@ public class AddOrEditCourse extends Activity {
 
 		DaySlot dayslot = createDaySlot();
 		// TODO add description
-		CourseInfo info = new CourseInfo(course, "", professor, dayslot,
-				section, crn, startTime, endTime, false);
-		return info;
+		if (safeStrings(course, "", professor, section)) {
+			CourseInfo info = new CourseInfo(course, "", professor, dayslot,
+					section, crn, startTime, endTime, false);
+			return info;
+		}
+		return null;
 	}
 
 	private String getType() {
@@ -156,6 +166,10 @@ public class AddOrEditCourse extends Activity {
 		dayslot.setDays(new boolean[] { mon.isChecked(), tue.isChecked(),
 				wed.isChecked(), thr.isChecked(), fri.isChecked() });
 		return dayslot;
+	}
+
+	private boolean safeStrings(String a, String b, String c, String d) {
+		return CourseParser.safeString(a + b + c + d);
 	}
 
 	private void populateFields() {

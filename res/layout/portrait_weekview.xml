@@ -10,35 +10,40 @@
 			android:orientation="vertical">
 			<TableRow android:id="@+id/widget64" android:layout_width="fill_parent"
 				android:layout_height="wrap_content" android:orientation="horizontal">
-				<TextView android:id="@+id/widget_filler"
-					android:layout_width="wrap_content" android:layout_height="fill_parent"
-					android:background="#CACACA" android:text="  " android:textSize="15sp"
-					android:textColor="#000000" android:layout_weight="1">
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="fill_parent" android:background="#CACACA"
+					android:text="    " android:textSize="15sp" android:textColor="#000000"
+					android:gravity="center">
 				</TextView>
 				<TextView android:id="@+id/widget_mon"
 					android:layout_width="wrap_content" android:layout_height="fill_parent"
-					android:background="#CACACA" android:text="M" android:textSize="12sp"
-					android:textColor="#000000" android:layout_weight="1">
+					android:background="#CACACA" android:text="Mon" android:textSize="12sp"
+					android:textColor="#000000" android:layout_weight="1"
+					android:gravity="center">
 				</TextView>
 				<TextView android:id="@+id/widget_tue"
 					android:layout_width="wrap_content" android:layout_height="fill_parent"
-					android:background="#CACACA" android:text="T" android:textSize="12sp"
-					android:textColor="#000000" android:layout_weight="1">
+					android:background="#CACACA" android:text="Tue" android:textSize="12sp"
+					android:textColor="#000000" android:layout_weight="1"
+					android:gravity="center">
 				</TextView>
 				<TextView android:id="@+id/widget_weds"
 					android:layout_width="wrap_content" android:layout_height="fill_parent"
-					android:background="#CACACA" android:text="W" android:textSize="12sp"
-					android:textColor="#000000" android:layout_weight="1">
+					android:background="#CACACA" android:text="Wed" android:textSize="12sp"
+					android:textColor="#000000" android:layout_weight="1"
+					android:gravity="center">
 				</TextView>
 				<TextView android:id="@+id/widget_thurs"
 					android:layout_width="wrap_content" android:layout_height="fill_parent"
-					android:background="#CACACA" android:text="R" android:textSize="12sp"
-					android:textColor="#000000" android:layout_weight="1">
+					android:background="#CACACA" android:text="Thur" android:textSize="12sp"
+					android:textColor="#000000" android:layout_weight="1"
+					android:gravity="center">
 				</TextView>
 				<TextView android:id="@+id/widget_fri"
 					android:layout_width="wrap_content" android:layout_height="fill_parent"
-					android:background="#CACACA" android:text="F" android:textSize="12sp"
-					android:textColor="#000000" android:layout_weight="1">
+					android:background="#CACACA" android:text="Fri" android:textSize="12sp"
+					android:textColor="#000000" android:layout_weight="1"
+					android:gravity="center">
 				</TextView>
 			</TableRow>
 			<TableRow android:layout_width="fill_parent"
