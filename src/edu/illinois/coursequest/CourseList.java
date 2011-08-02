@@ -3,9 +3,7 @@ package edu.illinois.coursequest;
 import java.util.ArrayList;
 
 //import scheduler.Course;
-/*
-So pretty much we're gonna reimplement this so that it utilizes a SQLite database....
- */
+
 public class CourseList {
 	private ArrayList<Course> sched = new ArrayList<Course>();
 	private static final int COLS = 5;

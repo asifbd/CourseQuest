@@ -53,9 +53,8 @@ public class ViewAll extends ListActivity {
 			// // Brings up Edit Info
 			return true;
 		case 2:
-		    CourseQuest.model.remove((int)info.id);
-		    CourseQuest.getSched().deleteCourse((int) info.id);
-		    fillData();
+			CourseQuest.getSched().deleteCourse((int) info.id);
+			fillData();
 			return true;
 		}
 		return false;
